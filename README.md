@@ -387,9 +387,9 @@ This project showcases expertise in:
 
 ## 📞 Contact & Links
 
-- 💼 [LinkedIn](#)
-- 🐙 [GitHub](#)
-- 📧 [Email](#)
+- 💼 [LinkedIn](https://www.linkedin.com/in/fauzi-wijana/)
+- 🐙 [GitHub](https://github.com/FauziWizana)
+- 📧 [Email](mailto:fauziwizana48@gmail.com)
 
 ## 📄 License
 
