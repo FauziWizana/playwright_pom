@@ -1,0 +1,426 @@
+Feature: Automation Exercise - Test Cases
+  As a user of Automation Exercise website
+  I want to test various functionalities
+  So that I can ensure the website works correctly
+
+# ==========================================
+# Test Case 1: Register User
+# ==========================================
+Scenario: Register a new user successfully
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click on "Signup / Login" button
+  Then I should see "New User Signup!" is visible
+  When I enter name and email address
+  And I click "Signup" button
+  Then I should see "ENTER ACCOUNT INFORMATION" is visible
+  When I fill details: Title, Name, Email, Password, Date of birth
+  And I select checkbox "Sign up for our newsletter!"
+  And I select checkbox "Receive special offers from our partners!"
+  And I fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
+  And I click "Create Account" button
+  Then I should see "ACCOUNT CREATED!" is visible
+  When I click "Continue" button
+  Then I should see "Logged in as username" is visible
+  When I click "Delete Account" button
+  Then I should see "ACCOUNT DELETED!" is visible
+  And I click "Continue" button
+
+# ==========================================
+# Test Case 2: Login User with correct email and password
+# ==========================================
+Scenario: Login with valid credentials
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click on "Signup / Login" button
+  Then I should see "Login to your account" is visible
+  When I enter correct email address and password
+  And I click "login" button
+  Then I should see "Logged in as username" is visible
+  When I click "Delete Account" button
+  Then I should see "ACCOUNT DELETED!" is visible
+
+# ==========================================
+# Test Case 3: Login User with incorrect email and password
+# ==========================================
+Scenario: Login with invalid credentials
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click on "Signup / Login" button
+  Then I should see "Login to your account" is visible
+  When I enter incorrect email address and password
+  And I click "login" button
+  Then I should see error "Your email or password is incorrect!" is visible
+
+# ==========================================
+# Test Case 4: Logout User
+# ==========================================
+Scenario: Logout successfully after login
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click on "Signup / Login" button
+  Then I should see "Login to your account" is visible
+  When I enter correct email address and password
+  And I click "login" button
+  Then I should see "Logged in as username" is visible
+  When I click "Logout" button
+  Then I should see that user is navigated to login page
+
+# ==========================================
+# Test Case 5: Register User with existing email
+# ==========================================
+Scenario: Attempt to register with existing email
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click on "Signup / Login" button
+  Then I should see "New User Signup!" is visible
+  When I enter name and already registered email address
+  And I click "Signup" button
+  Then I should see error "Email Address already exist!" is visible
+
+# ==========================================
+# Test Case 6: Contact Us Form
+# ==========================================
+Scenario: Submit contact us form successfully
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click on "Contact Us" button
+  Then I should see "GET IN TOUCH" is visible
+  When I enter name, email, subject and message
+  And I upload file
+  And I click "Submit" button
+  And I click OK button
+  Then I should see success message "Success! Your details have been submitted successfully." is visible
+  When I click "Home" button
+  Then I should see that landed to home page successfully
+
+# ==========================================
+# Test Case 7: Verify Test Cases Page
+# ==========================================
+Scenario: Verify navigation to test cases page
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click on "Test Cases" button
+  Then I should see user is navigated to test cases page successfully
+
+# ==========================================
+# Test Case 8: Verify All Products and product detail page
+# ==========================================
+Scenario: Verify products list and product detail page
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click on "Products" button
+  Then I should see user is navigated to ALL PRODUCTS page successfully
+  And the products list is visible
+  When I click on "View Product" of first product
+  Then user is landed to product detail page
+  And I should see that detail is visible: product name, category, price, availability, condition, brand
+
+# ==========================================
+# Test Case 9: Search Product
+# ==========================================
+Scenario: Search for a product successfully
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click on "Products" button
+  Then I should see user is navigated to ALL PRODUCTS page successfully
+  When I enter product name in search input and click search button
+  Then I should see "SEARCHED PRODUCTS" is visible
+  And I should see all the products related to search are visible
+
+# ==========================================
+# Test Case 10: Verify Subscription in home page
+# ==========================================
+Scenario: Subscribe to newsletter from home page
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I scroll down to footer
+  Then I should see text "SUBSCRIPTION"
+  When I enter email address in input and click arrow button
+  Then I should see success message "You have been successfully subscribed!" is visible
+
+# ==========================================
+# Test Case 11: Verify Subscription in Cart page
+# ==========================================
+Scenario: Subscribe to newsletter from cart page
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click "Cart" button
+  And I scroll down to footer
+  Then I should see text "SUBSCRIPTION"
+  When I enter email address in input and click arrow button
+  Then I should see success message "You have been successfully subscribed!" is visible
+
+# ==========================================
+# Test Case 12: Add Products in Cart
+# ==========================================
+Scenario: Add multiple products to cart
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click "Products" button
+  And I hover over first product and click "Add to cart"
+  And I click "Continue Shopping" button
+  And I hover over second product and click "Add to cart"
+  And I click "View Cart" button
+  Then I should see both products are added to Cart
+  And I should see their prices, quantity and total price
+
+# ==========================================
+# Test Case 13: Verify Product quantity in Cart
+# ==========================================
+Scenario: Verify product quantity can be increased in cart
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click "View Product" for any product on home page
+  Then I should see product detail is opened
+  When I increase quantity to 4
+  And I click "Add to cart" button
+  And I click "View Cart" button
+  Then I should see that product is displayed in cart page with exact quantity
+
+# ==========================================
+# Test Case 14: Place Order: Register while Checkout
+# ==========================================
+Scenario: Place order by registering during checkout
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I add products to cart
+  And I click "Cart" button
+  Then I should see that cart page is displayed
+  When I click Proceed To Checkout
+  And I click "Register / Login" button
+  And I fill all details in Signup and create account
+  Then I should see "ACCOUNT CREATED!" is visible
+  When I click "Continue" button
+  Then I should see "Logged in as username" at top
+  When I click "Cart" button
+  And I click "Proceed To Checkout" button
+  Then I should see Address Details and Review Your Order
+  When I enter description in comment text area and click "Place Order"
+  And I enter payment details: Name on Card, Card Number, CVC, Expiration date
+  And I click "Pay and Confirm Order" button
+  Then I should see success message "Your order has been placed successfully!"
+  When I click "Delete Account" button
+  Then I should see "ACCOUNT DELETED!" is visible
+  And I click "Continue" button
+
+# ==========================================
+# Test Case 15: Place Order: Register before Checkout
+# ==========================================
+Scenario: Place order by registering before checkout
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click "Signup / Login" button
+  And I fill all details in Signup and create account
+  Then I should see "ACCOUNT CREATED!" is visible
+  When I click "Continue" button
+  Then I should see "Logged in as username" at top
+  When I add products to cart
+  And I click "Cart" button
+  Then I should see that cart page is displayed
+  When I click Proceed To Checkout
+  Then I should see Address Details and Review Your Order
+  When I enter description in comment text area and click "Place Order"
+  And I enter payment details: Name on Card, Card Number, CVC, Expiration date
+  And I click "Pay and Confirm Order" button
+  Then I should see success message "Your order has been placed successfully!"
+  When I click "Delete Account" button
+  Then I should see "ACCOUNT DELETED!" is visible
+  And I click "Continue" button
+
+# ==========================================
+# Test Case 16: Place Order: Login before Checkout
+# ==========================================
+Scenario: Place order by logging in before checkout
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click "Signup / Login" button
+  And I fill email, password and click "Login" button
+  Then I should see "Logged in as username" at top
+  When I add products to cart
+  And I click "Cart" button
+  Then I should see that cart page is displayed
+  When I click Proceed To Checkout
+  Then I should see Address Details and Review Your Order
+  When I enter description in comment text area and click "Place Order"
+  And I enter payment details: Name on Card, Card Number, CVC, Expiration date
+  And I click "Pay and Confirm Order" button
+  Then I should see success message "Your order has been placed successfully!"
+  When I click "Delete Account" button
+  Then I should see "ACCOUNT DELETED!" is visible
+  And I click "Continue" button
+
+# ==========================================
+# Test Case 17: Remove Products From Cart
+# ==========================================
+Scenario: Remove products from cart
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I add products to cart
+  And I click "Cart" button
+  Then I should see that cart page is displayed
+  When I click "X" button corresponding to particular product
+  Then I should see that product is removed from the cart
+
+# ==========================================
+# Test Case 18: View Category Products
+# ==========================================
+Scenario: View products by category
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see that categories are visible on left side bar
+  When I click on "Women" category
+  And I click on any category link under "Women" category, for example: Dress
+  Then I should see that category page is displayed and confirm text "WOMEN - TOPS PRODUCTS"
+  When On left side bar, I click on any sub-category link of "Men" category
+  Then I should see that user is navigated to that category page
+
+# ==========================================
+# Test Case 19: View & Cart Brand Products
+# ==========================================
+Scenario: View products by brand
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  And I click on "Products" button
+  Then I should see that Brands are visible on left side bar
+  When I click on any brand name
+  Then I should see that user is navigated to brand page and brand products are displayed
+  When On left side bar, I click on any other brand link
+  Then I should see that user is navigated to that brand page and can see products
+
+# ==========================================
+# Test Case 20: Search Products and Verify Cart After Login
+# ==========================================
+Scenario: Search products and verify cart persists after login
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  And I click on "Products" button
+  Then I should see user is navigated to ALL PRODUCTS page successfully
+  When I enter product name in search input and click search button
+  Then I should see "SEARCHED PRODUCTS" is visible
+  And I should see all the products related to search are visible
+  When I add those products to cart
+  And I click "Cart" button
+  Then I should see that products are visible in cart
+  When I click "Signup / Login" button and submit login details
+  And I go to Cart page again
+  Then I should see that those products are visible in cart after login as well
+
+# ==========================================
+# Test Case 21: Add review on product
+# ==========================================
+Scenario: Add review to a product
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  And I click on "Products" button
+  Then I should see user is navigated to ALL PRODUCTS page successfully
+  When I click on "View Product" button
+  Then I should see "Write Your Review" is visible
+  When I enter name, email and review
+  And I click "Submit" button
+  Then I should see success message "Thank you for your review."
+
+# ==========================================
+# Test Case 22: Add to cart from Recommended items
+# ==========================================
+Scenario: Add product from recommended items to cart
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  And I scroll to bottom of page
+  Then I should see "RECOMMENDED ITEMS" are visible
+  When I click on "Add To Cart" on Recommended product
+  And I click on "View Cart" button
+  Then I should see that product is displayed in cart page
+
+# ==========================================
+# Test Case 23: Verify address details in checkout page
+# ==========================================
+Scenario: Verify address details match registration details
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I click "Signup / Login" button
+  And I fill all details in Signup and create account
+  Then I should see "ACCOUNT CREATED!" is visible
+  When I click "Continue" button
+  Then I should see "Logged in as username" at top
+  When I add products to cart
+  And I click "Cart" button
+  Then I should see that cart page is displayed
+  When I click Proceed To Checkout
+  Then I should see that the delivery address is same address filled at the time registration of account
+  And I should see that the billing address is same address filled at the time registration of account
+  When I click "Delete Account" button
+  Then I should see "ACCOUNT DELETED!" is visible
+  And I click "Continue" button
+
+# ==========================================
+# Test Case 24: Download Invoice after purchase order
+# ==========================================
+Scenario: Download invoice after placing order
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I add products to cart
+  And I click "Cart" button
+  Then I should see that cart page is displayed
+  When I click Proceed To Checkout
+  And I click "Register / Login" button
+  And I fill all details in Signup and create account
+  Then I should see "ACCOUNT CREATED!" is visible
+  When I click "Continue" button
+  Then I should see "Logged in as username" at top
+  When I click "Cart" button
+  And I click "Proceed To Checkout" button
+  Then I should see Address Details and Review Your Order
+  When I enter description in comment text area and click "Place Order"
+  And I enter payment details: Name on Card, Card Number, CVC, Expiration date
+  And I click "Pay and Confirm Order" button
+  Then I should see success message "Your order has been placed successfully!"
+  When I click "Download Invoice" button
+  Then I should see invoice is downloaded successfully
+  When I click "Continue" button
+  And I click "Delete Account" button
+  Then I should see "ACCOUNT DELETED!" is visible
+  And I click "Continue" button
+
+# ==========================================
+# Test Case 25: Verify Scroll Up using 'Arrow' button and Scroll Down functionality
+# ==========================================
+Scenario: Verify scroll up functionality using arrow button
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I scroll down page to bottom
+  Then I should see "SUBSCRIPTION" is visible
+  When I click on arrow at bottom right side to move upward
+  Then I should see that page is scrolled up and "Full-Fledged practice website for Automation Engineers" text is visible on screen
+
+# ==========================================
+# Test Case 26: Verify Scroll Up without 'Arrow' button and Scroll Down functionality
+# ==========================================
+Scenario: Verify scroll up functionality without arrow button
+  Given I launch the browser
+  When I navigate to "http://automationexercise.com"
+  Then I should see the home page is visible successfully
+  When I scroll down page to bottom
+  Then I should see "SUBSCRIPTION" is visible
+  When I scroll up page to top
+  Then I should see that page is scrolled up and "Full-Fledged practice website for Automation Engineers" text is visible on screen
